@@ -6,8 +6,8 @@ const cors = require('cors');
 const morgan = require('morgan');
 require('dotenv').config();
 
-// const notFoundHandler = require('./auth/error-handlers/404.js');
-// const errorHandler = require('./auth/error-handlers/500.js');
+const notFoundHandler = require('./auth/error-handlers/404.js');
+const errorHandler = require('./auth/error-handlers/500.js');
 
 // const authRoutes = require('./auth/routes/auth-routes.js');
 // const apiRoutes = require('./auth/routes/api-routes.js');
@@ -18,11 +18,12 @@ require('dotenv').config();
 // app.use(morgan('dev'));
 
 // app.use(express.json());
-// app.use(notFoundHandler)
-// app.use(errorHandler);
 
 // app.use(authRoutes);
 // app.use(apiRoutes);
+
+app.use('*', notFoundHandler)
+app.use(errorHandler);
 
 module.exports = {
   server: app,

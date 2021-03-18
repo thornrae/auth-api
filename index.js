@@ -11,9 +11,6 @@ const options = {
   useUnifiedTopology: true
 }
 
-// console.log(server);
-// server.start(3000);
-
 mongoose.connect('mongodb://localhost:27017/authapi', options)
   .then( () => {
     server.start(3000)
