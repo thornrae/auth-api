@@ -1,8 +1,8 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt'); //hash a plain text pw and compare a hashed pw against a plain text pw
+const jwt = require('jsonwebtoken');  //thing we use for creation (sign) of a jwt and verification (verify) of a jwt
 require('dotenv').config();
 
 const users = new mongoose.Schema( {
@@ -27,12 +27,17 @@ users.virtual('capabilities').get(function () {
   return acl[this.role];
 })
 
+//before we save, run this code:
 users.pre('save', async function () {
-  if (this.isModified('password')) {
+  // if (this.isModified('password')) {
     this.password = await bcrypt.hash(this.password, 10);
-  }
+    console.log(this.password);
+  // }
 });
 
+//_asynchronous
+//_statics are like standalone methods, invoked when needed, not everytime
+//_
 users.statics.authenticateBasic = async function (username, password) {
   const user = await this.findOne({ username })
   const valid = await bcrypt.compare(password, user.password)
@@ -45,10 +50,10 @@ users.statics.authenticateWithToken = async function (token) {
       const parsedToken = jwt.verify(token, process.env.SECRET);
       const user = this.findOne({username: parsedToken.username})
       if(user) { return user;}
-      throw new Error("User Note Found")
+      throw new Error('User Not Found')
   } catch (e) {
     throw new Error(e.message)
   }
 }
 
-module.exports = mongoose.model('users', users)
+module.exports = mongoose.model('users', users) //(Collection Name, name of your schema)
