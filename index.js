@@ -13,6 +13,6 @@ const options = {
 
 mongoose.connect(process.env.MONGODB_URI, options)
   .then( () => {
-    server.start(3000)
+    server.start(process.env.PORT)
   })
 
