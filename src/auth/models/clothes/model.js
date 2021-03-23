@@ -11,3 +11,5 @@ const clothesSchema = mongoose.Schema({
 const clothesModel = mongoose.model('clothes', clothesSchema);
 
 module.exports = clothesModel;
+
+//_^ clothes schema which is exported 
