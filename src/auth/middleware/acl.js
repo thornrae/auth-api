@@ -1,7 +1,9 @@
 'use strict';
 
-module.exports = (capabilty) => {
+module.exports = (capability) => {
+  
   return (req, res, next) => {
+    // console.log(capability)
     try {
       if (req.user.capabilities.includes(capability)) {
         next();
