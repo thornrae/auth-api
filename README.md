@@ -6,7 +6,7 @@ Authentication and API server merged into one.  Built with modularization in min
 
 [CI/CD](https://github.com/thornrae/auth-api/tree/main/.github/workflows)
 
-[Heroku Deployment]
+[Heroku Deployment](https://auth-api-401.herokuapp.com/)
 
 ## Set Up
 - Clone this repo
