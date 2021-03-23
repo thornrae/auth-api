@@ -42,6 +42,7 @@ async function handleGetAll(req, res) {
   res.status(200).json(allRecords);
 //_^^ asynchronous function that assigns, req.model when it invokes the .get method, to allRecords
 //_^^ returns all records and status 200 to user
+}
 
 async function handleGetOne(req, res) {
   const id = req.params.id;
@@ -81,4 +82,3 @@ async function handleDelete(req, res) {
 
 
 module.exports = router;
-
