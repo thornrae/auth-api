@@ -1,5 +1,7 @@
 'use strict';
 
+//500 error which is exported as middleware (signature)
+
 module.exports = function (err, req, res, next) {
   const error = err.message ? err.message : err;
 

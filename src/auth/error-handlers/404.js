@@ -1,5 +1,8 @@
 'use strict';
 
+
+//404 error which is exported as middleware (signature)
+
 module.exports = (req, res, next) => {
   let errorObj = { 
     status: 404,
