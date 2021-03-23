@@ -11,7 +11,7 @@ const options = {
   useUnifiedTopology: true
 }
 
-mongoose.connect('mongodb://localhost:27017/authapi', options)
+mongoose.connect(process.env.MONGODB_URI, options)
   .then( () => {
     server.start(3000)
   })
