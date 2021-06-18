@@ -15,8 +15,6 @@ const apiRoutes = require('./auth/routes/v1.js');
 
 const v2 = require('./auth/routes/v2.js');
 
-
-
 app.use(cors());
 app.use(morgan('dev'));
 
